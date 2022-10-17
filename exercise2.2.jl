@@ -1,7 +1,8 @@
-using Symbolics, LinearAlgebra
+using Symbolics, LinearAlgebra, FillArrays
 n = 4
 @variables A[1:n, 1:n]
-IA = collect(A) + I
+IA = A .+ Eye{Int}(n)
 res = det(IA)
-expanded = expand(res)
+s = Symbolics.scalarize(res)
+expanded = expand(s)
 args = arguments(Symbolics.unwrap(expanded))
