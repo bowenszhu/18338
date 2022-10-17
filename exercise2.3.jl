@@ -6,8 +6,8 @@ s = Symbolics.scalarize(p)
 expanded = expand(s)
 args = arguments(Symbolics.unwrap(expanded))
 
-@variables Λ[1:n,1:n]
-Λ=Symbolics.scalarize(Λ)
+@variables Λ[1:n, 1:n]
+Λ = Symbolics.scalarize(Λ)
 u = UpperTriangular(Λ)
 IΛ = u .+ Eye{Int}(n)
 res = det(IΛ)
